@@ -1,0 +1,45 @@
+.pagination {
+	display: flex;
+	justify-content: flex-end;
+	ul {
+		list-style: none;
+		padding: 0px;
+		display: flex;
+
+		li {
+			background: transparent;
+			padding: 10px 5px;
+			border-radius: 4px;
+			font-family: sans-serif;
+			color: $gray-800;
+			font-size: 14px;
+			font-weight: 600;
+			min-width: 20px;
+			text-align: center;
+			user-select: none;
+
+			&:last-child {
+				margin-right: 0px;
+			}
+
+			&:not(.active):not(.disabled) {
+				cursor: pointer;
+			}
+			&:not(.active):not(.disabled):hover {
+				color: $primary-light-2;
+			}
+			&:not(.active):not(.disabled):active {
+				color: $primary-light-3;
+			}
+
+			&.active {
+				color: $primary-light-1;
+			}
+
+			&.disabled {
+				color: $gray-400;
+				pointer-events: none;
+			}
+		}
+	}
+}

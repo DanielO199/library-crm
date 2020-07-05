@@ -1,0 +1,79 @@
+/*==================
+      General
+===================*/
+
+body {
+	background: $bg-body;
+	font-family: $font-family;
+	color: $dark;
+	font-size: $base-font;
+	margin: 0;
+	padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 10px 0;
+	font-family: $font-family-secondary;
+	font-weight: 600;
+}
+
+p {
+	line-height: 1.7;
+}
+
+svg {
+	max-width: 100%;
+}
+
+a {
+	color: $gray-600;
+
+	&:hover {
+		outline: 0;
+		text-decoration: none;
+	}
+	&:active {
+		outline: 0;
+		text-decoration: none;
+	}
+	&:focus {
+		outline: 0;
+		text-decoration: none;
+	}
+}
+
+b,
+strong {
+	font-weight: 500;
+}
+
+#root {
+	height: 100%;
+}
+
+main {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.logged {
+	margin-top: 50px;
+	padding: 20px;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.w-100 {
+	width: 100%;
+}
+
+.app {
+	display: flex;
+}

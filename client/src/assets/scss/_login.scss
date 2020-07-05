@@ -1,0 +1,36 @@
+.login {
+	display: flex;
+	width: 100%;
+
+	.form-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 700px;
+		padding: 150px 0px;
+		position: relative;
+	}
+
+	form {
+		width: 80%;
+	}
+
+	.login-form__inputs {
+		margin-bottom: 50px;
+	}
+
+	.login-form__title {
+		text-align: center;
+		font-size: 32px;
+		font-weight: 500;
+		margin-bottom: 50px;
+	}
+
+	.login-background {
+		background: url('../img/login-bg.jpg');
+		background-position: center center;
+		height: 100vh;
+		width: 100%;
+		position: relative;
+	}
+}

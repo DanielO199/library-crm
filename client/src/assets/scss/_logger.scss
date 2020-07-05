@@ -1,0 +1,56 @@
+.logger-container {
+	position: fixed;
+	z-index: 2;
+	right: 20px;
+	top: 20px;
+	height: auto;
+}
+
+.logger {
+	display: flex;
+	justify-content: space-between;
+	min-width: 250px;
+	position: relative;
+	padding: 15px 20px;
+	left: 0;
+	border-radius: 5px;
+	border: 2px solid;
+	background-color: #ffffff;
+	box-shadow: 0 1px 5px #ccc;
+	margin-bottom: 15px;
+	transition: all 0.2s linear;
+	color: $gray-900;
+	&.log-success {
+		border-color: $success;
+		.logger-icon {
+			i {
+				margin-right: 10px;
+				color: $success;
+			}
+		}
+	}
+	&.log-error {
+		border-color: $error;
+		.logger-icon {
+			i {
+				margin-right: 10px;
+				color: $error;
+			}
+		}
+	}
+	&:hover {
+		left: -7px;
+	}
+}
+
+.logger-time {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	font-size: 0.9em;
+}
+
+.logger-close {
+	color: $gray-600;
+	cursor: pointer;
+}
