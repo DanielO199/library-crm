@@ -3,28 +3,36 @@ import { observable, action, decorate } from 'mobx';
 import APIs from 'api';
 
 class UsersStore {
-	loading = true;
+	loading = false;
+	isFirstPageNeeded = false;
+	usersQuantity = undefined;
 	usersList = [];
-	user = {
+	user = {};
+	filters = {
+		id: '',
+		email: '',
 		name: '',
-		surname: '',
-		address: '',
-		phone: ''
+		status: ''
 	};
-	alert = '';
 
-	fetchUsers() {
+	fetchUsers(page, params) {
+		this.loading = true;
 		return APIs.users
-			.getUsers()
+			.getUsers(page, params)
 			.then((response) => {
-				this.usersList = response.users;
-			})
-			.catch((error) => {
-				this.alert = error;
+				this.usersList = response.results;
+				this.usersQuantity = response.length;
 			})
 			.finally(() => {
 				this.loading = false;
 			});
+	}
+
+	resetFilters() {
+		this.filters.id = '';
+		this.filters.email = '';
+		this.filters.name = '';
+		this.filters.status = '';
 	}
 
 	fetchUser(id) {
@@ -34,9 +42,6 @@ class UsersStore {
 			.then((response) => {
 				this.user = response.user;
 			})
-			.catch((error) => {
-				this.alert = error;
-			})
 			.finally(() => {
 				this.loading = false;
 			});
@@ -44,65 +49,35 @@ class UsersStore {
 
 	addUser(data) {
 		this.loading = true;
-		return APIs.users
-			.addUser(data)
-			.then((response) => {
-				this.alert = response.message;
-			})
-			.catch((error) => {
-				this.alert = error;
-			})
-			.finally(() => {
-				this.loading = false;
-				setTimeout(() => {
-					this.alert = '';
-				}, 4000);
-			});
+		return APIs.users.addUser(data).finally(() => {
+			this.loading = false;
+		});
 	}
 
-	updateUser(data) {
+	updateUser(data, id) {
 		this.loading = true;
-		return APIs.users
-			.updateUser(data)
-			.then((response) => {
-				this.alert = response.message;
-			})
-			.catch((error) => {
-				this.alert = error;
-			})
-			.finally(() => {
-				this.loading = false;
-				setTimeout(() => {
-					this.alert = '';
-				}, 2000);
-			});
+		return APIs.users.updateUser(data, id).finally(() => {
+			this.loading = false;
+		});
 	}
 
 	deleteUser(id) {
-		return APIs.users
-			.deleteUser(id)
-			.then((response) => {
-				this.usersList = this.usersList.filter((user) => user._id !== id);
-				this.alert = response.message;
-			})
-			.catch((error) => {
-				this.alert = error;
-			})
-			.finally(() => {
-				this.loading = false;
-				setTimeout(() => {
-					this.alert = '';
-				}, 2000);
-			});
+		this.isFirstPageNeeded = false;
+		return APIs.users.deleteUser(id).finally(() => {
+			this.isFirstPageNeeded = true;
+		});
 	}
 }
 
 decorate(UsersStore, {
 	loading: observable,
+	isFirstPageNeeded: observable,
 	usersList: observable,
+	usersQuantity: observable,
 	user: observable,
-	alert: observable,
+	filters: observable,
 	fetchUsers: action,
+	resetFilters: action,
 	fetchUser: action,
 	addUser: action,
 	updateUser: action,

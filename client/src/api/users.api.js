@@ -3,8 +3,8 @@ import { request } from './request';
 const endpointBasePath = '/users';
 
 export default class UsersApi {
-	getUsers(params = {}) {
-		return request(`${endpointBasePath}`, {
+	getUsers(page, params) {
+		return request(`${endpointBasePath}?page=${page}&limit=5`, {
 			method: 'GET',
 			query: params
 		});
@@ -23,9 +23,8 @@ export default class UsersApi {
 		});
 	}
 
-	updateUser(params = {}) {
-		console.log(params);
-		return request(`${endpointBasePath}/${params['id']}`, {
+	updateUser(params, id) {
+		return request(`${endpointBasePath}/${id}`, {
 			method: 'PATCH',
 			data: params
 		});

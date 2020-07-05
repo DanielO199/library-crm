@@ -1,15 +1,21 @@
 import Dashboard from 'views/Dashboard';
-import UsersList from 'views/UsersList';
 import BooksList from 'views/BooksList';
 import NewBook from 'views/NewBook';
 import UpdateBook from 'views/UpdateBook';
 import Book from 'views/Book';
+import UsersList from 'views/UsersList';
+import NewUser from 'views/NewUser';
+import UpdateUser from 'views/UpdateUser';
+import User from 'views/User';
 
 export const authRoutes = [
 	{ path: '/home', name: 'Dashboard', component: Dashboard },
-	{ path: '/users', name: 'UsersList', component: UsersList },
 	{ path: '/books', name: 'BooksList', component: BooksList },
 	{ path: '/new/book', name: 'NewBook', component: NewBook },
-	{ path: '/book/:bookId', name: 'BooksList', component: Book },
-	{ path: '/edit-book/:bookId', name: 'BooksList', component: UpdateBook }
+	{ path: '/edit-book/:bookId', name: 'BooksList', component: UpdateBook },
+	{ path: '/book/:bookId', name: 'Book', component: Book },
+	{ path: '/users', name: 'UsersList', component: UsersList },
+	{ path: '/new/user', name: 'NewUser', component: NewUser },
+	{ path: '/edit-user/:userId', name: 'UpdateUser', component: UpdateUser },
+	{ path: '/user/:userId', name: 'User', component: User }
 ];

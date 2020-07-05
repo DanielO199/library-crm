@@ -6,7 +6,7 @@ import { BooksStore } from 'stores';
 import { Button, Input, Modal } from 'components/common';
 import { useForm } from 'utils';
 
-const BookListHeader = () => {
+const BooksListHeader = () => {
 	return <h1 className='books-list__header'>Books</h1>;
 };
 
@@ -14,7 +14,7 @@ const BooksListNone = () => {
 	return <h2 className='books-list__none'>No books</h2>;
 };
 
-const BookListToolBar = () => {
+const BooksListToolBar = () => {
 	return (
 		<div className='books-list__tools'>
 			<Link to='/new/book'>
@@ -27,7 +27,7 @@ const BookListToolBar = () => {
 	);
 };
 
-const BookListFilters = observer(() => {
+const BooksListFilters = observer(() => {
 	const [formState, inputHandler] = useForm(
 		{
 			isbn: { value: '', isValid: false },
@@ -90,7 +90,7 @@ const BookListFilters = observer(() => {
 				<div className='books-list__filters-btn'>
 					<Button
 						onClick={async () => {
-							BooksStore.filters.isbn = formState.inputs.title.isbn;
+							BooksStore.filters.isbn = formState.inputs.isbn.value;
 							BooksStore.filters.title = formState.inputs.title.value;
 							BooksStore.filters.author = formState.inputs.author.value;
 							BooksStore.filters.status = formState.inputs.status.value;
@@ -162,7 +162,7 @@ const BookItem = ({ id, image, title, isbn, author, status }) => {
 				<td className='book-item__actions'>
 					<Link to={`/book/${id}`}>View</Link>
 					<Link to={`/edit-book/${id}`}>Edit</Link>
-					<span onClick={() => console.log(id)}>Delete</span>
+					<span onClick={showModal}>Delete</span>
 				</td>
 			</tr>
 		</>
@@ -188,10 +188,10 @@ const BooksListTable = ({ children }) => {
 };
 
 export {
-	BookListHeader,
+	BooksListHeader,
 	BooksListNone,
-	BookListToolBar,
-	BookListFilters,
+	BooksListToolBar,
+	BooksListFilters,
 	BookItem,
 	BooksListTable
 };

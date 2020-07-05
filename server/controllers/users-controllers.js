@@ -19,7 +19,7 @@ const getUserById = async (req, res) => {
 };
 
 const createUser = async (req, res) => {
-	const { name, surname, phone, status, email } = req.body;
+	const { name, surname, phone, email } = req.body;
 
 	let existingUser;
 	try {
@@ -37,7 +37,7 @@ const createUser = async (req, res) => {
 		surname,
 		phone,
 		email,
-		status,
+		status: 'Enabled',
 		image: req.file.path
 	});
 
@@ -62,15 +62,17 @@ const updateUser = async (req, res) => {
 		return res.status(500).json({ message: 'Could not update user' });
 	}
 
-	fs.unlink(updatedUser.image, (err) => {
-		console.log(err);
-	});
-
 	updatedUser.name = name;
 	updatedUser.surname = surname;
 	updatedUser.status = status;
 	updatedUser.phone = phone;
-	updatedUser.image = req.file.path;
+
+	if (req.file) {
+		fs.unlink(updatedUser.image, (err) => {
+			console.log(err);
+		});
+		updatedUser.image = req.file.path;
+	}
 
 	try {
 		await updatedUser.save();

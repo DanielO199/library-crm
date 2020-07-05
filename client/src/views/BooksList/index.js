@@ -4,10 +4,10 @@ import { observer } from 'mobx-react';
 import { BooksStore } from 'stores';
 import { Pagination, Loader } from 'components/common';
 import {
-	BookListHeader,
+	BooksListHeader,
 	BooksListNone,
-	BookListToolBar,
-	BookListFilters,
+	BooksListToolBar,
+	BooksListFilters,
 	BooksListTable,
 	BookItem
 } from './components';
@@ -29,9 +29,9 @@ const BooksList = observer(() => {
 	return (
 		<>
 			<div className='books-list'>
-				<BookListHeader />
-				<BookListToolBar />
-				<BookListFilters />
+				<BooksListHeader />
+				<BooksListToolBar />
+				<BooksListFilters />
 				{loading && <Loader />}
 				{!loading && booksList && (
 					<BooksListTable>

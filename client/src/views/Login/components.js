@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
 import { Input, Button, LoadingSpinner } from 'components/common';
-import { useForm } from 'utils';
-import { VALIDATOR_EMAIL, VALIDATOR_REQUIRE } from 'utils/validators';
+import { useForm, VALIDATOR_EMAIL, VALIDATOR_REQUIRE } from 'utils';
 
 const LoginForm = () => {
 	const [isLoading, setIsLoading] = useState(false);

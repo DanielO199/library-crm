@@ -1,0 +1,30 @@
+.new-user {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	border: solid $border-color 1px;
+	border-radius: 5px;
+	margin: auto;
+	padding-left: 20px;
+	padding-right: 20px;
+	box-sizing: border-box;
+}
+
+.new-user__header {
+	font-weight: 500;
+}
+
+.new-user-form {
+	max-width: 600px;
+	padding-left: 100px;
+}
+
+.new-user-form__btns {
+	display: flex;
+	justify-content: flex-start;
+	margin-bottom: 15px;
+}
+
+.new-user-form__btn {
+	margin-right: 20px;
+}

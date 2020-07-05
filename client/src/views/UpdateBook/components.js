@@ -4,8 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 import { BooksStore } from 'stores';
 import { Input, Button, LoadingSpinner } from 'components/common';
-import { VALIDATOR_REQUIRE } from 'utils/validators';
-import { useForm, ImageUpload } from 'utils';
+import { useForm, ImageUpload, VALIDATOR_REQUIRE } from 'utils';
 
 const BookUpdateHeader = () => {
 	return <h1 className='update-book__header'>Edit Book</h1>;
