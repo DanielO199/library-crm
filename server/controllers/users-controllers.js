@@ -51,7 +51,7 @@ const createUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-	const { name, surname, status, phone } = req.body;
+	const { name, surname, phone, email } = req.body;
 
 	const userId = req.params.uid;
 
@@ -64,7 +64,8 @@ const updateUser = async (req, res) => {
 
 	updatedUser.name = name;
 	updatedUser.surname = surname;
-	updatedUser.status = status;
+	// updatedUser.status = status;
+	updatedUser.email = email;
 	updatedUser.phone = phone;
 
 	if (req.file) {
