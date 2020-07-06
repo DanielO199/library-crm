@@ -4,7 +4,13 @@
 @import 'login';
 @import 'input';
 @import 'button';
+@import 'image-upload';
+@import 'back-drop';
+@import 'modal';
+@import 'pagination';
+@import 'logger';
 @import 'loading-spinner';
+@import 'loader';
 @import 'books-list';
 @import 'book';
 @import 'new-book';
@@ -13,9 +19,7 @@
 @import 'user';
 @import 'new-user';
 @import 'update-user';
-@import 'image-upload';
-@import 'loader';
-@import 'back-drop';
-@import 'modal';
-@import 'pagination';
-@import 'logger';
+@import 'loans-list';
+@import 'loan';
+@import 'new-loan';
+@import 'update-loan';

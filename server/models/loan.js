@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 
 const loanSchema = new Schema({
 	issueDate: { type: Date, required: true },
-	dueDate: { type: Date, required: true },
 	returnDate: { type: Date, required: false },
 	createdAt: { type: Date, default: Date.now },
 	status: { type: String, required: true },

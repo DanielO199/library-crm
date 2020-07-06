@@ -7,6 +7,10 @@ import UsersList from 'views/UsersList';
 import NewUser from 'views/NewUser';
 import UpdateUser from 'views/UpdateUser';
 import User from 'views/User';
+import LoansList from 'views/LoansList';
+import NewLoan from 'views/NewLoan';
+import UpdateLoan from 'views/UpdateLoan';
+import Loan from 'views/Loan';
 
 export const authRoutes = [
 	{ path: '/home', name: 'Dashboard', component: Dashboard },
@@ -17,5 +21,9 @@ export const authRoutes = [
 	{ path: '/users', name: 'UsersList', component: UsersList },
 	{ path: '/new/user', name: 'NewUser', component: NewUser },
 	{ path: '/edit-user/:userId', name: 'UpdateUser', component: UpdateUser },
-	{ path: '/user/:userId', name: 'User', component: User }
+	{ path: '/user/:userId', name: 'User', component: User },
+	{ path: '/loans', name: 'LoansList', component: LoansList },
+	{ path: '/new/loan', name: 'NewLoan', component: NewLoan },
+	{ path: '/edit-loan/:loanId', name: 'UpdateLoan', component: UpdateLoan },
+	{ path: '/loan/:loanId', name: 'Loan', component: Loan }
 ];
