@@ -1,37 +1,36 @@
 import { request } from './request';
 
-const endpointBasePath = '/users';
+const endpointBasePath = '/loans';
 
-export default class UsersApi {
-	getUsers(params = {}) {
-		return request(`${endpointBasePath}`, {
+export default class LoansApi {
+	getLoans(page, params) {
+		return request(`${endpointBasePath}?page=${page}&limit=5`, {
 			method: 'GET',
 			query: params
 		});
 	}
 
-	getUser(id) {
+	getLoan(id) {
 		return request(`${endpointBasePath}/${id}`, {
 			method: 'GET'
 		});
 	}
 
-	addUser(data) {
+	addLoan(data) {
 		return request(`${endpointBasePath}`, {
 			method: 'POST',
 			data: data
 		});
 	}
 
-	updateUser(params = {}) {
-		console.log(params);
-		return request(`${endpointBasePath}/${params['id']}`, {
+	updateLoan(params, id) {
+		return request(`${endpointBasePath}/${id}`, {
 			method: 'PATCH',
 			data: params
 		});
 	}
 
-	deleteUser(id) {
+	deleteLoan(id) {
 		return request(`${endpointBasePath}/${id}`, {
 			method: 'DELETE'
 		});
