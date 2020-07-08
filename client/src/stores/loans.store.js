@@ -75,6 +75,7 @@ class LoansStore {
 		return APIs.loans
 			.getBooks()
 			.then((response) => {
+				this.books = [];
 				for (const result in response.results) {
 					this.books.push({
 						value: `${response.results[result].id}`,
@@ -92,6 +93,8 @@ class LoansStore {
 		return APIs.loans
 			.getUsers()
 			.then((response) => {
+				this.users = [];
+				//TODO FILTER BY AVAILABLE
 				for (const result in response.results) {
 					this.users.push({
 						value: `${response.results[result].id}`,

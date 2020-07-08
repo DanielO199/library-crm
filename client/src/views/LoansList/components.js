@@ -150,8 +150,8 @@ const LoanItem = ({ id, user, book, issueDate, returnDate, status }) => {
 			</Modal>
 
 			<tr>
-				<td>{book}</td>
-				<td>{user}</td>
+				<td>{book.title}</td>
+				<td>{user.name}</td>
 				<td>{issueDate}</td>
 				<td>{returnDate}</td>
 				<td>

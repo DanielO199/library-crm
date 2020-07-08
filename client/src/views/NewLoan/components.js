@@ -13,6 +13,7 @@ const NewLoanHeader = () => {
 };
 
 const NewLoanForm = observer(({ books, users }) => {
+	console.log(users);
 	const [selectedBook, setSelectedBook] = useState();
 	const [selectedUser, setSelectedUser] = useState();
 	const [selectedDate, setSelectedDate] = useState();
@@ -47,14 +48,19 @@ const NewLoanForm = observer(({ books, users }) => {
 				onChange={handleChangeDate}
 				showTimeSelect
 				dateFormat='Pp'
+				isClearable
 			/>
 			<div className='new-loan-form__btns'>
 				<div className='new-loan-form__btn '>
 					<Button
 						onClick={async () => {
-							// await LoansStore.addLoan();
+							await LoansStore.addLoan({
+								selectedBook,
+								selectedUser,
+								selectedDate
+							});
 							console.log(selectedBook, selectedUser, selectedDate);
-							// history.push('/loans');
+							history.push('/loans');
 						}}>
 						{LoansStore.loading ? <LoadingSpinner /> : 'Save'}
 					</Button>

@@ -1,18 +1,20 @@
 const express = require('express');
 
-const usersControllers = require('../controllers/users-controllers');
+const loansControllers = require('../controllers/loans.controllers');
+const paginatedResults = require('../middleware/pagination');
+const Loan = require('../models/loan');
 
 const router = express.Router();
 
-//GET ALL USERS
-router.get('/', usersControllers.getAllUsers);
-//GET SINGLE USER
-router.get('/:lid', usersControllers.getUserById);
-//ADD USER
-router.post('/', usersControllers.createUser);
-//UPDATE USER
-router.patch('/:lid', usersControllers.updateUser);
-//DELETE USER
-router.delete('/:lid', usersControllers.deleteUser);
+//GET ALL LOANS
+router.get('/', paginatedResults(Loan), loansControllers.getAllLoans);
+//GET SINGLE LOAN
+router.get('/:lid', loansControllers.getLoanById);
+//ADD LOAN
+router.post('/', loansControllers.createLoan);
+//UPDATE LOAN
+// router.patch('/:lid', loansControllers.updateUser);
+//DELETE LOAN
+// router.delete('/:lid', loansControllers.deleteUser);
 
 module.exports = router;
