@@ -35,4 +35,16 @@ export default class LoansApi {
 			method: 'DELETE'
 		});
 	}
+
+	getBooks() {
+		return request(`/books`, {
+			method: 'GET'
+		});
+	}
+
+	getUsers() {
+		return request(`/users`, {
+			method: 'GET'
+		});
+	}
 }

@@ -7,6 +7,8 @@ class LoansStore {
 	isFirstPageNeeded = false;
 	loansQuantity = undefined;
 	loansList = [];
+	books = [];
+	users = [];
 	loan = {};
 	filters = {
 		id: '',
@@ -67,12 +69,48 @@ class LoansStore {
 			this.isFirstPageNeeded = true;
 		});
 	}
+
+	fetchBooks() {
+		this.loading = true;
+		return APIs.loans
+			.getBooks()
+			.then((response) => {
+				for (const result in response.results) {
+					this.books.push({
+						value: `${response.results[result].id}`,
+						label: `${response.results[result].isbn} - ${response.results[result].title}`
+					});
+				}
+			})
+			.finally(() => {
+				this.loading = false;
+			});
+	}
+
+	fetchUsers() {
+		this.loading = true;
+		return APIs.loans
+			.getUsers()
+			.then((response) => {
+				for (const result in response.results) {
+					this.users.push({
+						value: `${response.results[result].id}`,
+						label: `${response.results[result].name} ${response.results[result].surname} - ${response.results[result].email}`
+					});
+				}
+			})
+			.finally(() => {
+				this.loading = false;
+			});
+	}
 }
 
 decorate(LoansStore, {
 	loading: observable,
 	isFirstPageNeeded: observable,
 	loansList: observable,
+	books: observable.ref,
+	users: observable.ref,
 	loansQuantity: observable,
 	loan: observable,
 	filters: observable,
@@ -81,7 +119,9 @@ decorate(LoansStore, {
 	fetchLoan: action,
 	addLoan: action,
 	updateLoan: action,
-	deleteLoan: action
+	deleteLoan: action,
+	fetchBooks: action,
+	fetchUsers: action
 });
 
 export default new LoansStore();

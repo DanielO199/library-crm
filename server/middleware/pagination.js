@@ -25,7 +25,7 @@ function paginatedResults(model) {
 		} else {
 			queriesObj = {};
 		}
-		console.log(queries);
+
 		const startIndex = (page - 1) * limit;
 		const endIndex = page * limit;
 
