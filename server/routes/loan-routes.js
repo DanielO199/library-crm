@@ -13,7 +13,7 @@ router.get('/:lid', loansControllers.getLoanById);
 //ADD LOAN
 router.post('/', loansControllers.createLoan);
 //UPDATE LOAN
-// router.patch('/:lid', loansControllers.updateUser);
+router.patch('/:lid', loansControllers.updateLoan);
 //DELETE LOAN
 // router.delete('/:lid', loansControllers.deleteUser);
 

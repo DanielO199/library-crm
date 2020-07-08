@@ -60,6 +60,7 @@ const Input = (props) => {
 				value={inputState.value}
 				required={props.required}
 				autoComplete='off'
+				disabled={props.disabled}
 			/>
 		) : (
 			<textarea

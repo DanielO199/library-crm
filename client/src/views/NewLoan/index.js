@@ -15,7 +15,7 @@ const NewLoan = observer(() => {
 		<div className='new-loan'>
 			<NewLoanHeader />
 			{LoansStore.loading && <Loader />}
-			{!LoansStore.loading && LoansStore.books && (
+			{!LoansStore.loading && LoansStore.books && LoansStore.users && (
 				<NewLoanForm books={LoansStore.books} users={LoansStore.users} />
 			)}
 		</div>

@@ -37,7 +37,7 @@ export default class LoansApi {
 	}
 
 	getBooks() {
-		return request(`/books`, {
+		return request(`/books?status=Available`, {
 			method: 'GET'
 		});
 	}

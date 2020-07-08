@@ -40,8 +40,9 @@ class LoansStore {
 	fetchLoan(id) {
 		this.loading = true;
 		return APIs.loans
-			.getLoans(id)
+			.getLoan(id)
 			.then((response) => {
+				// console.log(response);
 				this.loan = response.loan;
 			})
 			.finally(() => {
@@ -94,7 +95,6 @@ class LoansStore {
 			.getUsers()
 			.then((response) => {
 				this.users = [];
-				//TODO FILTER BY AVAILABLE
 				for (const result in response.results) {
 					this.users.push({
 						value: `${response.results[result].id}`,
@@ -115,7 +115,7 @@ decorate(LoansStore, {
 	books: observable.ref,
 	users: observable.ref,
 	loansQuantity: observable,
-	loan: observable,
+	loan: observable.ref,
 	filters: observable,
 	fetchLoans: action,
 	resetFilters: action,

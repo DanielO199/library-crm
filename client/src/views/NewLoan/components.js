@@ -13,7 +13,6 @@ const NewLoanHeader = () => {
 };
 
 const NewLoanForm = observer(({ books, users }) => {
-	console.log(users);
 	const [selectedBook, setSelectedBook] = useState();
 	const [selectedUser, setSelectedUser] = useState();
 	const [selectedDate, setSelectedDate] = useState();

@@ -41,7 +41,7 @@ const LoansList = observer(() => {
 								id={loan.id}
 								issueDate={loan.issueDate}
 								returnDate={loan.returnDate}
-								createdAt={loan.createdAt}
+								status={loan.status}
 								book={loan.book}
 								user={loan.user}
 							/>

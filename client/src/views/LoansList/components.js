@@ -151,7 +151,9 @@ const LoanItem = ({ id, user, book, issueDate, returnDate, status }) => {
 
 			<tr>
 				<td>{book.title}</td>
-				<td>{user.name}</td>
+				<td>
+					{user.name} {user.surname}
+				</td>
 				<td>{issueDate}</td>
 				<td>{returnDate}</td>
 				<td>
@@ -159,7 +161,7 @@ const LoanItem = ({ id, user, book, issueDate, returnDate, status }) => {
 				</td>
 				<td className='loan-item__actions'>
 					<Link to={`/loan/${id}`}>View</Link>
-					<Link to={`/edit-loan/${id}`}>Edit</Link>
+					{status !== 'Closed' && <Link to={`/edit-loan/${id}`}>Edit</Link>}
 					<span onClick={showModal}>Delete</span>
 				</td>
 			</tr>
