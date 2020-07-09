@@ -21,7 +21,7 @@ const getLoanById = async (req, res, next) => {
 };
 
 const createLoan = async (req, res) => {
-	const { selectedBook, selectedUser, selectedDate } = req.body;
+	const { selectedBook, selectedUser, issueDate } = req.body;
 
 	let user;
 	try {
@@ -54,7 +54,7 @@ const createLoan = async (req, res) => {
 	}
 
 	const createdLoan = new Loan({
-		issueDate: selectedDate,
+		issueDate,
 		book,
 		user,
 		status: 'In progress'
@@ -80,21 +80,20 @@ const updateLoan = async (req, res) => {
 		return res.status(500).json({ message: 'Could not find loan' });
 	}
 
-	console.log(loan);
-	//todo remember to update book aswell make it available again
-
-	// let book
-	// try{
-	//   book = await Book.findById()
-	// }catch(err) {
-	// 	return res.status(500).json({ message: 'Could not find book' });
-	// }
+	let book;
+	try {
+		book = await Book.findById(loan.book._id);
+	} catch (err) {
+		return res.status(500).json({ message: 'Could not find book' });
+	}
 
 	loan.returnDate = returnDate;
 	loan.status = 'Closed';
+	book.status = 'Available';
 
 	try {
 		await loan.save();
+		await book.save();
 	} catch (err) {
 		return res.status(500).json({ message: 'Could not update loan' });
 	}

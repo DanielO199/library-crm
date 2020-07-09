@@ -15,7 +15,7 @@ const NewLoanHeader = () => {
 const NewLoanForm = observer(({ books, users }) => {
 	const [selectedBook, setSelectedBook] = useState();
 	const [selectedUser, setSelectedUser] = useState();
-	const [selectedDate, setSelectedDate] = useState();
+	const [issueDate, setIssueDate] = useState();
 	const history = useHistory();
 
 	const handleChangeBook = (selectedBook) => {
@@ -27,7 +27,7 @@ const NewLoanForm = observer(({ books, users }) => {
 	};
 
 	const handleChangeDate = (date) => {
-		setSelectedDate(date);
+		setIssueDate(date);
 	};
 
 	return (
@@ -43,7 +43,7 @@ const NewLoanForm = observer(({ books, users }) => {
 				options={users}
 			/>
 			<DatePicker
-				selected={selectedDate}
+				selected={issueDate}
 				onChange={handleChangeDate}
 				showTimeSelect
 				dateFormat='Pp'
@@ -56,9 +56,9 @@ const NewLoanForm = observer(({ books, users }) => {
 							await LoansStore.addLoan({
 								selectedBook,
 								selectedUser,
-								selectedDate
+								issueDate
 							});
-							console.log(selectedBook, selectedUser, selectedDate);
+							console.log(selectedBook, selectedUser, issueDate);
 							history.push('/loans');
 						}}>
 						{LoansStore.loading ? <LoadingSpinner /> : 'Save'}

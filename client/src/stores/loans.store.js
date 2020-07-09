@@ -42,7 +42,6 @@ class LoansStore {
 		return APIs.loans
 			.getLoan(id)
 			.then((response) => {
-				// console.log(response);
 				this.loan = response.loan;
 			})
 			.finally(() => {

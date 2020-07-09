@@ -24,6 +24,20 @@
 	border-radius: 5px;
 }
 
+.form-input-not-allowed {
+	input {
+		width: 100%;
+		height: 40px;
+		font: inherit;
+		font-weight: 600;
+		border: 1px solid #ccc;
+		background: white;
+		padding-left: 15px;
+		border-radius: 5px;
+		cursor: not-allowed;
+	}
+}
+
 .form-input input:focus,
 .form-input textarea:focus {
 	outline: none;

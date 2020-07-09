@@ -31,7 +31,7 @@ const LoansList = observer(() => {
 			<div className='loans-list'>
 				<LoansListHeader />
 				<LoansListToolBar />
-				<LoansListFilters />
+				{/* <LoansListFilters /> */}
 				{loading && <Loader />}
 				{!loading && loansList && (
 					<LoansListTable>

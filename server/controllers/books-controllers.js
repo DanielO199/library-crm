@@ -98,6 +98,15 @@ const deleteBook = async (req, res) => {
 		return res.status(404).json({ message: 'Could not find book' });
 	}
 
+	if (book.status === 'Unavailable') {
+		return res
+			.status(200)
+			.json({
+				message:
+					"This book can't be deleted because it's related to one or more loans."
+			});
+	}
+
 	try {
 		await Book.deleteOne({ _id: bookId });
 	} catch (err) {
