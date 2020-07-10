@@ -4,7 +4,7 @@ const endpointBasePath = '/loans';
 
 export default class LoansApi {
 	getLoans(page, params) {
-		return request(`${endpointBasePath}?page=${page}&limit=5`, {
+		return request(`${endpointBasePath}?page=${page}&limit=10`, {
 			method: 'GET',
 			query: params
 		});

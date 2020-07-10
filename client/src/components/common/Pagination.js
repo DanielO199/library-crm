@@ -4,12 +4,18 @@ import { observer } from 'mobx-react';
 import { createPagination } from 'utils';
 
 const Pagination = observer(
-	({ numberOfArticles, fetchArticles, params, isFirstPageNeeded }) => {
+	({
+		numberOfArticles,
+		fetchArticles,
+		params,
+		isFirstPageNeeded,
+		articlesPerPage
+	}) => {
 		const [currentPage, setCurrentPage] = React.useState(1);
 
 		const { pagination } = createPagination({
 			numberOfArticles,
-			articlesPerPage: 5,
+			articlesPerPage,
 			numberOfButtons: 3,
 			currentPage
 		});

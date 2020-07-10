@@ -19,6 +19,18 @@
 	padding-left: 100px;
 }
 
+.new-loan-form__item {
+	width: 100%;
+	margin: 1.7rem 0;
+}
+
+.new-loan-datepicker {
+	width: 100%;
+	height: 40px;
+	padding-left: 15px;
+	box-sizing: border-box;
+}
+
 .new-loan-form__btns {
 	display: flex;
 	justify-content: flex-start;

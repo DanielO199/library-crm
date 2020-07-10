@@ -42,12 +42,15 @@ const LoanUpdateForm = observer(({ id }) => {
 				<label>Issue date</label>
 				<input type='text' value={issueDate} disabled={true} />
 			</div>
+			<label>Return date</label>
 			<DatePicker
 				selected={returnDate}
 				onChange={handleChangeDate}
 				showTimeSelect
 				dateFormat='Pp'
 				isClearable
+				withPortal
+				className='update-loan-datepicker'
 			/>
 			<div className='update-loan-form__btns'>
 				<div className='update-loan-form__btn '>

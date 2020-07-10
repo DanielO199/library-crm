@@ -52,6 +52,7 @@ const UsersList = observer(() => {
 					<Pagination
 						numberOfArticles={usersQuantity}
 						params={filters}
+						articlesPerPage={5}
 						fetchArticles={(page, params) =>
 							UsersStore.fetchUsers(page, params)
 						}

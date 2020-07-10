@@ -157,7 +157,12 @@ const BookItem = ({ id, image, title, isbn, author, status }) => {
 				<td>{isbn}</td>
 				<td>{author}</td>
 				<td>
-					<span>{status}</span>
+					<span
+						className={`${
+							status === 'Available' ? 'available' : 'unavailable'
+						}`}>
+						{status}
+					</span>
 				</td>
 				<td className='book-item__actions'>
 					<Link to={`/book/${id}`}>View</Link>

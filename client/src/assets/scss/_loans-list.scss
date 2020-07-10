@@ -31,40 +31,8 @@
 		}
 	}
 
-	.loans-list__filters {
-		display: flex;
-		flex-direction: column;
-		padding: 0 20px 0 100px;
-		margin: 25px 0;
-		border: solid $border-color 1px;
-		border-radius: 5px;
-	}
-
-	.loans-list__filters-inputs {
-		display: flex;
-		justify-content: space-between;
-		flex-wrap: wrap;
-	}
-
-	.loans-list__filters-input {
-		width: 45%;
-		min-width: 200px;
-	}
-
-	.loans-list__filters-btns {
-		display: flex;
-		justify-content: flex-end;
-		margin-bottom: 15px;
-	}
-
-	.loans-list__filters-btn {
-		margin-left: 20px;
-		i {
-			margin-right: 8px;
-		}
-	}
-
 	table {
+		margin-top: 25px;
 		width: 100%;
 		border-collapse: collapse;
 		color: $gray-900;
@@ -91,10 +59,17 @@
 			padding: 15px;
 			height: 50px;
 			border: solid $border-color 1px;
-			span {
+			.in-progress {
 				background-color: $success-2;
 				color: $success;
 				border: solid $success 1px;
+				border-radius: 5px;
+				padding: 8px;
+			}
+			.closed {
+				background-color: $gray-200;
+				color: $gray-600;
+				border: solid $gray-400 1px;
 				border-radius: 5px;
 				padding: 8px;
 			}

@@ -158,7 +158,9 @@ const UserItem = ({ id, image, name, surname, email, status }) => {
 					{name} {surname}
 				</td>
 				<td>
-					<span>{status}</span>
+					<span className={`${status === 'Enabled' ? 'enabled' : 'disabled'}`}>
+						{status}
+					</span>
 				</td>
 				<td className='user-item__actions'>
 					<Link to={`/user/${id}`}>View</Link>

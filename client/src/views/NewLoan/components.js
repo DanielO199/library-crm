@@ -32,23 +32,34 @@ const NewLoanForm = observer(({ books, users }) => {
 
 	return (
 		<div className='new-loan-form'>
-			<Select
-				value={selectedBook}
-				onChange={handleChangeBook}
-				options={books}
-			/>
-			<Select
-				value={selectedUser}
-				onChange={handleChangeUser}
-				options={users}
-			/>
-			<DatePicker
-				selected={issueDate}
-				onChange={handleChangeDate}
-				showTimeSelect
-				dateFormat='Pp'
-				isClearable
-			/>
+			<div className='new-loan-form__item'>
+				<Select
+					value={selectedBook}
+					onChange={handleChangeBook}
+					options={books}
+					placeholder='Select book...'
+				/>
+			</div>
+			<div className='new-loan-form__item'>
+				<Select
+					value={selectedUser}
+					onChange={handleChangeUser}
+					options={users}
+					placeholder='Select user...'
+				/>
+			</div>
+			<div className='new-loan-form__item'>
+				<DatePicker
+					selected={issueDate}
+					onChange={handleChangeDate}
+					showTimeSelect
+					dateFormat='Pp'
+					isClearable
+					withPortal
+					className='new-loan-datepicker'
+					placeholderText='Issue date'
+				/>
+			</div>
 			<div className='new-loan-form__btns'>
 				<div className='new-loan-form__btn '>
 					<Button
@@ -58,7 +69,6 @@ const NewLoanForm = observer(({ books, users }) => {
 								selectedUser,
 								issueDate
 							});
-							console.log(selectedBook, selectedUser, issueDate);
 							history.push('/loans');
 						}}>
 						{LoansStore.loading ? <LoadingSpinner /> : 'Save'}

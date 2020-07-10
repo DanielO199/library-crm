@@ -7,7 +7,6 @@ import {
 	LoansListHeader,
 	LoansListNone,
 	LoansListToolBar,
-	LoansListFilters,
 	LoansListTable,
 	LoanItem
 } from './components';
@@ -31,7 +30,6 @@ const LoansList = observer(() => {
 			<div className='loans-list'>
 				<LoansListHeader />
 				<LoansListToolBar />
-				{/* <LoansListFilters /> */}
 				{loading && <Loader />}
 				{!loading && loansList && (
 					<LoansListTable>
@@ -52,6 +50,7 @@ const LoansList = observer(() => {
 					<Pagination
 						numberOfArticles={loansQuantity}
 						params={filters}
+						articlesPerPage={10}
 						fetchArticles={(page, params) =>
 							LoansStore.fetchLoans(page, params)
 						}

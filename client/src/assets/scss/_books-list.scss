@@ -91,10 +91,17 @@
 			padding: 15px;
 			height: 50px;
 			border: solid $border-color 1px;
-			span {
+			.available {
 				background-color: $success-2;
 				color: $success;
 				border: solid $success 1px;
+				border-radius: 5px;
+				padding: 8px;
+			}
+			.unavailable {
+				background-color: $primary-light-9;
+				color: $primary-light-2;
+				border: solid $primary-light-6 1px;
 				border-radius: 5px;
 				padding: 8px;
 			}

@@ -157,7 +157,12 @@ const LoanItem = ({ id, user, book, issueDate, returnDate, status }) => {
 				<td>{issueDate}</td>
 				<td>{returnDate}</td>
 				<td>
-					<span>{status}</span>
+					<span
+						className={`${
+							status === 'In progress' ? 'in-progress' : 'closed'
+						}`}>
+						{status}
+					</span>
 				</td>
 				<td className='loan-item__actions'>
 					<Link to={`/loan/${id}`}>View</Link>
