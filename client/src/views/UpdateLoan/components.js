@@ -48,6 +48,7 @@ const LoanUpdateForm = observer(({ id }) => {
 				onChange={handleChangeDate}
 				isClearable
 				withPortal
+				dateFormat='dd/MM/yyyy'
 				className='update-loan-datepicker'
 				minDate={new Date(createdAt)}
 			/>

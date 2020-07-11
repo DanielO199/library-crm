@@ -79,7 +79,7 @@ class LoansStore {
 				for (const result in response.results) {
 					this.books.push({
 						value: `${response.results[result].id}`,
-						label: `${response.results[result].isbn} - ${response.results[result].title}`
+						label: `${response.results[result].title} - ${response.results[result].author}`
 					});
 				}
 			})

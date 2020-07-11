@@ -51,9 +51,6 @@
 			object-fit: cover;
 		}
 	}
-	.content-item__image {
-		height: 250px;
-	}
 
 	.loan-data__label {
 		min-width: 100px;
@@ -62,5 +59,9 @@
 
 	.loan-data__content-item {
 		font-weight: 600;
+		a {
+			color: $link;
+			text-decoration: none;
+		}
 	}
 }
