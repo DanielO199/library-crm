@@ -101,7 +101,28 @@ const updateLoan = async (req, res) => {
 	res.status(200).json({ message: 'Loan updated succesfully' });
 };
 
-const deleteLoan = () => {};
+const deleteLoan = async (req, res) => {
+	const loanId = req.params.lid;
+
+	let loan;
+	try {
+		loan = await Loan.findById(loanId);
+	} catch (err) {
+		return res.status(500).json({ message: 'Could not delete loan' });
+	}
+
+	if (!loan) {
+		return res.status(404).json({ message: 'Could not find loan' });
+	}
+
+	try {
+		await Loan.deleteOne({ _id: loanId });
+	} catch (err) {
+		return res.status(500).json({ message: 'Could not delete loan.' });
+	}
+
+	res.status(200).json({ message: 'Loan deleted' });
+};
 
 exports.getAllLoans = getAllLoans;
 exports.getLoanById = getLoanById;

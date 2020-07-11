@@ -15,6 +15,6 @@ router.post('/', loansControllers.createLoan);
 //UPDATE LOAN
 router.patch('/:lid', loansControllers.updateLoan);
 //DELETE LOAN
-// router.delete('/:lid', loansControllers.deleteUser);
+router.delete('/:lid', loansControllers.deleteLoan);
 
 module.exports = router;
