@@ -13,7 +13,7 @@ const LoanUpdateHeader = () => {
 
 const LoanUpdateForm = observer(({ id }) => {
 	const [returnDate, setReturnDate] = useState();
-	const { book, user, issueDate } = LoansStore.loan;
+	const { book, user, issueDate, createdAt } = LoansStore.loan;
 	const history = useHistory();
 
 	const handleChangeDate = (date) => {
@@ -46,11 +46,10 @@ const LoanUpdateForm = observer(({ id }) => {
 			<DatePicker
 				selected={returnDate}
 				onChange={handleChangeDate}
-				showTimeSelect
-				dateFormat='Pp'
 				isClearable
 				withPortal
 				className='update-loan-datepicker'
+				minDate={new Date(createdAt)}
 			/>
 			<div className='update-loan-form__btns'>
 				<div className='update-loan-form__btn '>

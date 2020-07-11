@@ -52,8 +52,6 @@ const NewLoanForm = observer(({ books, users }) => {
 				<DatePicker
 					selected={issueDate}
 					onChange={handleChangeDate}
-					showTimeSelect
-					dateFormat='Pp'
 					isClearable
 					withPortal
 					className='new-loan-datepicker'
