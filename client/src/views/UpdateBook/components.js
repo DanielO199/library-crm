@@ -63,27 +63,24 @@ const BookUpdateForm = observer(({ id }) => {
 				initialValid={true}
 			/>
 			<ImageUpload id='image' onInput={inputHandler} initialImage={image} />
-			<div className='update-book-form__btns'>
-				<div className='update-book-form__btn '>
-					<Button
-						onClick={
-							formState.isValid
-								? async () => {
-										const formData = new FormData();
-										formData.append('isbn', formState.inputs.isbn.value);
-										formData.append('title', formState.inputs.title.value);
-										formData.append('author', formState.inputs.author.value);
-										formData.append('image', formState.inputs.image.value);
+			<div className='update-book-form__btn'>
+				<Button
+					onClick={
+						formState.isValid
+							? async () => {
+									const formData = new FormData();
+									formData.append('isbn', formState.inputs.isbn.value);
+									formData.append('title', formState.inputs.title.value);
+									formData.append('author', formState.inputs.author.value);
+									formData.append('image', formState.inputs.image.value);
 
-										await BooksStore.updateBook(formData, id);
-										history.push('/books');
-								  }
-								: null
-						}>
-						{BooksStore.loading ? <LoadingSpinner /> : 'Save'}
-					</Button>
-				</div>
-				<Button inverse>Reset</Button>
+									await BooksStore.updateBook(formData, id);
+									history.push('/books');
+							  }
+							: null
+					}>
+					{BooksStore.loading ? <LoadingSpinner /> : 'Save'}
+				</Button>
 			</div>
 		</div>
 	);

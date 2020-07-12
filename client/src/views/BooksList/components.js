@@ -86,30 +86,18 @@ const BooksListFilters = observer(() => {
 					/>
 				</div>
 			</div>
-			<div className='books-list__filters-btns'>
-				<div className='books-list__filters-btn'>
-					<Button
-						onClick={async () => {
-							BooksStore.filters.isbn = formState.inputs.isbn.value;
-							BooksStore.filters.title = formState.inputs.title.value;
-							BooksStore.filters.author = formState.inputs.author.value;
-							BooksStore.filters.status = formState.inputs.status.value;
-							await BooksStore.fetchBooks(1, BooksStore.filters);
-							BooksStore.isFirstPageNeeded = true;
-						}}>
-						<i className='fas fa-search'></i> Search
-					</Button>
-				</div>
-				<div className='books-list__filters-btn'>
-					<Button
-						inverse
-						onClick={async () => {
-							await BooksStore.fetchBooks();
-							BooksStore.resetFilters();
-						}}>
-						Reset
-					</Button>
-				</div>
+			<div className='books-list__filters-btn'>
+				<Button
+					onClick={async () => {
+						BooksStore.filters.isbn = formState.inputs.isbn.value;
+						BooksStore.filters.title = formState.inputs.title.value;
+						BooksStore.filters.author = formState.inputs.author.value;
+						BooksStore.filters.status = formState.inputs.status.value;
+						await BooksStore.fetchBooks(1, BooksStore.filters);
+						BooksStore.isFirstPageNeeded = true;
+					}}>
+					<i className='fas fa-search'></i> Search
+				</Button>
 			</div>
 		</div>
 	);

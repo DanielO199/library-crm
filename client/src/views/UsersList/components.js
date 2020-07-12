@@ -86,30 +86,18 @@ const UsersListFilters = observer(() => {
 					/>
 				</div>
 			</div>
-			<div className='users-list__filters-btns'>
-				<div className='users-list__filters-btn'>
-					<Button
-						onClick={async () => {
-							UsersStore.filters.id = formState.inputs.id.value;
-							UsersStore.filters.name = formState.inputs.name.value;
-							UsersStore.filters.email = formState.inputs.email.value;
-							UsersStore.filters.status = formState.inputs.status.value;
-							await UsersStore.fetchUsers(1, UsersStore.filters);
-							UsersStore.isFirstPageNeeded = true;
-						}}>
-						<i className='fas fa-search'></i> Search
-					</Button>
-				</div>
-				<div className='users-list__filters-btn'>
-					<Button
-						inverse
-						onClick={async () => {
-							await UsersStore.fetchUsers();
-							UsersStore.resetFilters();
-						}}>
-						Reset
-					</Button>
-				</div>
+			<div className='users-list__filters-btn'>
+				<Button
+					onClick={async () => {
+						UsersStore.filters.id = formState.inputs.id.value;
+						UsersStore.filters.name = formState.inputs.name.value;
+						UsersStore.filters.email = formState.inputs.email.value;
+						UsersStore.filters.status = formState.inputs.status.value;
+						await UsersStore.fetchUsers(1, UsersStore.filters);
+						UsersStore.isFirstPageNeeded = true;
+					}}>
+					<i className='fas fa-search'></i> Search
+				</Button>
 			</div>
 		</div>
 	);

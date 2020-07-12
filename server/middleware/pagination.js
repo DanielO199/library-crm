@@ -12,7 +12,7 @@ function paginatedResults(model) {
 				continue;
 			queries.push({
 				[Object.entries(req.query)[query][0]]: {
-					$regex: `.*${Object.entries(req.query)[query][1].toLowerCase()}.*`
+					$regex: `.*${Object.entries(req.query)[query][1]}.*`
 				}
 			});
 		}

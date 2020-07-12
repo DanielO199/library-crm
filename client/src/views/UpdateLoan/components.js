@@ -52,21 +52,18 @@ const LoanUpdateForm = observer(({ id }) => {
 				className='update-loan-datepicker'
 				minDate={new Date(createdAt)}
 			/>
-			<div className='update-loan-form__btns'>
-				<div className='update-loan-form__btn '>
-					<Button
-						onClick={
-							returnDate
-								? async () => {
-										await LoansStore.updateLoan({ returnDate }, id);
-										history.push('/loans');
-								  }
-								: null
-						}>
-						{LoansStore.loading ? <LoadingSpinner /> : 'Save'}
-					</Button>
-				</div>
-				<Button inverse>Reset</Button>
+			<div className='update-loan-form__btn'>
+				<Button
+					onClick={
+						returnDate
+							? async () => {
+									await LoansStore.updateLoan({ returnDate }, id);
+									history.push('/loans');
+							  }
+							: null
+					}>
+					{LoansStore.loading ? <LoadingSpinner /> : 'Save'}
+				</Button>
 			</div>
 		</div>
 	);

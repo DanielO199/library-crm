@@ -51,14 +51,10 @@
 		min-width: 200px;
 	}
 
-	.books-list__filters-btns {
+	.books-list__filters-btn {
 		display: flex;
 		justify-content: flex-end;
 		margin-bottom: 15px;
-	}
-
-	.books-list__filters-btn {
-		margin-left: 20px;
 		i {
 			margin-right: 8px;
 		}

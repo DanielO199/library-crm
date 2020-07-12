@@ -81,28 +81,25 @@ const UserUpdateForm = observer(({ id }) => {
 				initialValid={true}
 			/>
 			<ImageUpload id='image' onInput={inputHandler} initialImage={image} />
-			<div className='update-user-form__btns'>
-				<div className='update-user-form__btn '>
-					<Button
-						onClick={
-							formState.isValid
-								? async () => {
-										const formData = new FormData();
-										formData.append('name', formState.inputs.name.value);
-										formData.append('surname', formState.inputs.surname.value);
-										formData.append('phone', formState.inputs.phone.value);
-										formData.append('email', formState.inputs.email.value);
-										formData.append('image', formState.inputs.image.value);
+			<div className='update-user-form__btn'>
+				<Button
+					onClick={
+						formState.isValid
+							? async () => {
+									const formData = new FormData();
+									formData.append('name', formState.inputs.name.value);
+									formData.append('surname', formState.inputs.surname.value);
+									formData.append('phone', formState.inputs.phone.value);
+									formData.append('email', formState.inputs.email.value);
+									formData.append('image', formState.inputs.image.value);
 
-										await UsersStore.updateUser(formData, id);
-										history.push('/users');
-								  }
-								: null
-						}>
-						{UsersStore.loading ? <LoadingSpinner /> : 'Save'}
-					</Button>
-				</div>
-				<Button inverse>Reset</Button>
+									await UsersStore.updateUser(formData, id);
+									history.push('/users');
+							  }
+							: null
+					}>
+					{UsersStore.loading ? <LoadingSpinner /> : 'Save'}
+				</Button>
 			</div>
 		</div>
 	);
