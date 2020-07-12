@@ -125,7 +125,7 @@ const UserItem = ({ id, image, name, surname, email, status }) => {
 						<button
 							className='button'
 							onClick={async () => {
-								await UsersStore.deleteUser(id);
+								await UsersStore.updateUserStatus(id);
 								await UsersStore.fetchUsers(1, UsersStore.filters);
 								UsersStore.isFirstPageNeeded = true;
 							}}>
@@ -153,7 +153,9 @@ const UserItem = ({ id, image, name, surname, email, status }) => {
 				<td className='user-item__actions'>
 					<Link to={`/user/${id}`}>View</Link>
 					<Link to={`/edit-user/${id}`}>Edit</Link>
-					<span onClick={showModal}>Delete</span>
+					<span onClick={showModal}>
+						{status === 'Enabled' ? 'Disable' : 'Enable'}
+					</span>
 				</td>
 			</tr>
 		</>

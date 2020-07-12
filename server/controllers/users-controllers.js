@@ -64,7 +64,6 @@ const updateUser = async (req, res) => {
 
 	updatedUser.name = name;
 	updatedUser.surname = surname;
-	// updatedUser.status = status;
 	updatedUser.email = email;
 	updatedUser.phone = phone;
 
@@ -82,6 +81,29 @@ const updateUser = async (req, res) => {
 	}
 
 	res.status(200).json({ message: 'User updated succesfully' });
+};
+
+const updateUserStatus = async (req, res) => {
+	const userId = req.params.uid;
+
+	let updatedUser;
+	try {
+		updatedUser = await User.findById(userId);
+	} catch (err) {
+		return res.status(500).json({ message: `Could not update user` });
+	}
+
+	updatedUser.status === 'Enabled'
+		? (updatedUser.status = 'Disabled')
+		: (updatedUser.status = 'Enabled');
+
+	try {
+		await updatedUser.save();
+	} catch (err) {
+		return res.status(500).json({ message: `Could not update user` });
+	}
+
+	res.status(200).json({ message: `User update succesfully` });
 };
 
 const deleteUser = async (req, res) => {
@@ -115,4 +137,5 @@ exports.getAllUsers = getAllUsers;
 exports.getUserById = getUserById;
 exports.createUser = createUser;
 exports.updateUser = updateUser;
+exports.updateUserStatus = updateUserStatus;
 exports.deleteUser = deleteUser;

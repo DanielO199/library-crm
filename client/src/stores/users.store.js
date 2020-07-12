@@ -61,6 +61,13 @@ class UsersStore {
 		});
 	}
 
+	updateUserStatus(id) {
+		this.loading = true;
+		return APIs.users.updateUserStatus(id).finally(() => {
+			this.loading = false;
+		});
+	}
+
 	deleteUser(id) {
 		this.isFirstPageNeeded = false;
 		return APIs.users.deleteUser(id).finally(() => {
@@ -81,6 +88,7 @@ decorate(UsersStore, {
 	fetchUser: action,
 	addUser: action,
 	updateUser: action,
+	updateUserStatus: action,
 	deleteUser: action
 });
 

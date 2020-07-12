@@ -13,6 +13,8 @@ router.get('/', paginatedResults(User), usersControllers.getAllUsers);
 router.get('/:uid', usersControllers.getUserById);
 //ADD USER
 router.post('/', fileUpload.single('image'), usersControllers.createUser);
+//UPDATE USER STATUS
+router.patch('/status/:uid', usersControllers.updateUserStatus);
 //UPDATE USER
 router.patch('/:uid', fileUpload.single('image'), usersControllers.updateUser);
 //DELETE USER

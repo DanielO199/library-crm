@@ -30,6 +30,12 @@ export default class UsersApi {
 		});
 	}
 
+	updateUserStatus(id) {
+		return request(`${endpointBasePath}/status/${id}`, {
+			method: 'PATCH'
+		});
+	}
+
 	deleteUser(id) {
 		return request(`${endpointBasePath}/${id}`, {
 			method: 'DELETE'
