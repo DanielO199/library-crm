@@ -166,8 +166,11 @@ const LoanItem = ({ id, user, book, issueDate, returnDate, status }) => {
 				</td>
 				<td className='loan-item__actions'>
 					<Link to={`/loan/${id}`}>View</Link>
-					{status !== 'Closed' && <Link to={`/edit-loan/${id}`}>Edit</Link>}
-					<span onClick={showModal}>Delete</span>
+					{status !== 'Closed' ? (
+						<Link to={`/edit-loan/${id}`}>Edit</Link>
+					) : (
+						<span onClick={showModal}>Delete</span>
+					)}
 				</td>
 			</tr>
 		</>

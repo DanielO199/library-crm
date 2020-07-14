@@ -46,9 +46,11 @@ const createLoan = async (req, res) => {
 	}
 
 	book.status = 'Unavailable';
+	user.borrowedBooksQuantity += 1;
 
 	try {
 		await book.save();
+		await user.save();
 	} catch (err) {
 		return res.status(500).json({ message: 'Could not save loan' });
 	}

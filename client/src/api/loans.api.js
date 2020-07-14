@@ -43,7 +43,7 @@ export default class LoansApi {
 	}
 
 	getUsers() {
-		return request(`/users`, {
+		return request(`/users?status=Enabled`, {
 			method: 'GET'
 		});
 	}

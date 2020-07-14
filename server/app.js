@@ -9,6 +9,7 @@ const adminRoutes = require('./routes/admin-routes');
 const usersRoutes = require('./routes/user-routes');
 const booksRoutes = require('./routes/book-routes');
 const loansRoutes = require('./routes/loan-routes');
+const dashboardRoutes = require('./routes/dashboard-routes');
 
 const server = express();
 
@@ -32,6 +33,7 @@ server.use('/api/admin', adminRoutes);
 server.use('/api/users', usersRoutes);
 server.use('/api/books', booksRoutes);
 server.use('/api/loans', loansRoutes);
+server.use('/api/dashboard', dashboardRoutes);
 
 server.use(() => {
 	throw new Error('Could not find this route');
