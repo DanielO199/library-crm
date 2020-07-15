@@ -96,13 +96,15 @@ const getAllLoansSortedByMonths = async (req, res) => {
 };
 
 const getMostActiveUsers = async (req, res) => {
-	let users;
+	let mostActiveUsers;
 
 	try {
-		users = await User.find().limit(5).sort({ borrowedBooksQuantity: -1 });
+		mostActiveUsers = await User.find()
+			.limit(5)
+			.sort({ borrowedBooksQuantity: -1 });
 	} catch (err) {}
 
-	res.json({ users });
+	res.json({ mostActiveUsers });
 };
 
 exports.getQuantityOfDocuments = getQuantityOfDocuments;
