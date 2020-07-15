@@ -23,7 +23,7 @@ const createBook = async (req, res) => {
 
 	let existingBook;
 	try {
-		existingBook = await Book.findOne({ title: title });
+		existingBook = await Book.findOne({ isbn });
 	} catch (err) {
 		return res.status(500).json({ message: 'Adding new book failed' });
 	}
@@ -99,12 +99,10 @@ const deleteBook = async (req, res) => {
 	}
 
 	if (book.status === 'Unavailable') {
-		return res
-			.status(200)
-			.json({
-				message:
-					"This book can't be deleted because it's related to one or more loans."
-			});
+		return res.status(200).json({
+			message:
+				"This book can't be deleted because it's related to one or more loans."
+		});
 	}
 
 	try {

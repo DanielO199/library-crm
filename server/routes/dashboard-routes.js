@@ -8,5 +8,7 @@ const router = express.Router();
 router.get('/', dashboardControllers.getQuantityOfDocuments);
 //GET ALL LOANS SORTED BY DATE
 router.get('/loans', dashboardControllers.getAllLoansSortedByMonths);
+//GET MOST ACTIVE USERS
+router.get('/users', dashboardControllers.getMostActiveUsers);
 
 module.exports = router;
