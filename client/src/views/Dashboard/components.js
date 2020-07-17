@@ -90,4 +90,32 @@ const Chart = ({ loans, legendPosition }) => {
 	);
 };
 
-export { Card, Chart };
+const UsersList = ({ users }) => {
+	return (
+		<div className='users-list'>
+			<h2>Most active users</h2>
+			{users.map((user) => (
+				<div className='users-list__items'>
+					<div>{user.name}</div>
+					<div>{user.name}</div>
+				</div>
+			))}
+		</div>
+	);
+};
+
+const BooksList = ({ books }) => {
+	return (
+		<div className='books-list'>
+			<h2>Best books</h2>
+			{books.map((book) => (
+				<div className='books-list__items'>
+					<div>{book.title}</div>
+					<div>{book.name}</div>
+				</div>
+			))}
+		</div>
+	);
+};
+
+export { Card, Chart, UsersList, BooksList };

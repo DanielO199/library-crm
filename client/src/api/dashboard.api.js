@@ -15,8 +15,8 @@ export default class DashboardApi {
 		});
 	}
 
-	getMostActiveUsers() {
-		return request(`${endpointBasePath}/users`, {
+	getMostActiveUsersAndBooks() {
+		return request(`${endpointBasePath}`, {
 			method: 'GET'
 		});
 	}

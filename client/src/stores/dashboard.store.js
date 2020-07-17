@@ -8,6 +8,7 @@ class DashboardStore {
 	booksQuantity = undefined;
 	loansQuantity = undefined;
 	mostActiveUsers = [];
+	bestBooks = [];
 	loans = [];
 
 	fetchQuantity() {
@@ -29,7 +30,6 @@ class DashboardStore {
 		return APIs.dashboard
 			.getLoans()
 			.then((response) => {
-				console.log(response);
 				this.loans = response.borrowsInMonthObj;
 			})
 			.finally(() => {
@@ -37,12 +37,13 @@ class DashboardStore {
 			});
 	}
 
-	fetchMostActiveUsers() {
+	fetchMostActiveUsersAndBooks() {
 		this.loading = true;
 		return APIs.dashboard
-			.getMostActiveUsers()
+			.getMostActiveUsersAndBooks()
 			.then((response) => {
 				this.mostActiveUsers = response.mostActiveUsers;
+				this.bestBooks = response.bestBooks;
 			})
 			.finally(() => {
 				this.loading = false;
@@ -56,10 +57,11 @@ decorate(DashboardStore, {
 	booksQuantity: observable,
 	loansQuantity: observable,
 	mostActiveUsers: observable,
+	bestBooks: observable,
 	loans: observable,
 	fetchQuantity: action,
 	fetchLoans: action,
-	fetchMostActiveUsers: action
+	fetchMostActiveUsersAndBooks: action
 });
 
 export default new DashboardStore();

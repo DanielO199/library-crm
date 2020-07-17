@@ -3,32 +3,47 @@ import { observer } from 'mobx-react';
 
 import { DasboardStore } from 'stores';
 import { Loader } from 'components/common';
-import { Card, Chart } from './components';
+import { Card, Chart, UsersList, BooksList } from './components';
 
 const Dashboard = observer(() => {
+	const {
+		loading,
+		usersQuantity,
+		booksQuantity,
+		loansQuantity,
+		loans,
+		mostActiveUsers,
+		bestBooks
+	} = DasboardStore;
+
 	useEffect(() => {
 		DasboardStore.fetchQuantity();
 		DasboardStore.fetchLoans();
-		DasboardStore.fetchMostActiveUsers();
+		DasboardStore.fetchMostActiveUsersAndBooks();
 	}, []);
 
 	return (
 		<div className='dashboard'>
-			{DasboardStore.loading && <Loader />}
-			{!DasboardStore.loading &&
-				DasboardStore.usersQuantity &&
-				DasboardStore.booksQuantity &&
-				DasboardStore.loansQuantity &&
-				DasboardStore.loans && (
+			{loading && <Loader />}
+			{!loading &&
+				usersQuantity &&
+				booksQuantity &&
+				loansQuantity &&
+				loans &&
+				mostActiveUsers &&
+				bestBooks && (
 					<>
 						<div className='dashboard-cards'>
-							<Card quantity={DasboardStore.usersQuantity} label='Users' />
-							<Card quantity={DasboardStore.booksQuantity} label='Books' />
-							<Card quantity={DasboardStore.loansQuantity} label='Loans' />
+							<Card quantity={usersQuantity} label='Users' />
+							<Card quantity={booksQuantity} label='Books' />
+							<Card quantity={loansQuantity} label='Loans' />
 						</div>
 						<div className='dasboard-charts'>
-							TOP 5 CZYTELNIKOW TOP 5 NAJLEPSZYCH KSIAZEK MOZE
-							<Chart loans={DasboardStore.loans} legendPosition='bottom' />
+							<Chart loans={loans} legendPosition='bottom' />
+						</div>
+						<div className='dashboard-best'>
+							<UsersList users={mostActiveUsers} />
+							<BooksList books={bestBooks} />
 						</div>
 					</>
 				)}

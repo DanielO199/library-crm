@@ -46,5 +46,23 @@
 }
 
 .chart {
-	width: 50%;
+	width: 60%;
+}
+
+.dashboard-best {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	width: 100%;
+}
+
+.users-list__items,
+.books-list__items {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.books-list {
+	margin-left: 15px;
 }

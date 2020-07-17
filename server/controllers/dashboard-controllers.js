@@ -40,8 +40,8 @@ const getAllLoansSortedByMonths = async (req, res) => {
 		Dec: 0
 	};
 
-	const issuesDates = [];
-	const monthsArr = [];
+	let issuesDates = [];
+	let monthsArr = [];
 
 	for (const loan in loans) {
 		issuesDates.push(loans[loan].issueDate);
@@ -95,18 +95,26 @@ const getAllLoansSortedByMonths = async (req, res) => {
 	res.json({ borrowsInMonthObj: Object.values(borrowsInMonthObj) });
 };
 
-const getMostActiveUsers = async (req, res) => {
-	let mostActiveUsers;
+const getMostActiveUsersAndBooks = async (req, res) => {
+	let mostActiveUsers, bestBooks;
 
 	try {
 		mostActiveUsers = await User.find()
 			.limit(5)
 			.sort({ borrowedBooksQuantity: -1 });
-	} catch (err) {}
+	} catch (err) {
+		return res.status(500).json({ message: 'Could not load data' });
+	}
 
-	res.json({ mostActiveUsers });
+	try {
+		bestBooks = await Book.find().limit(5).sort({ loansQuantity: -1 });
+	} catch (err) {
+		return res.status(500).json({ message: 'Could not load data' });
+	}
+
+	res.json({ mostActiveUsers, bestBooks });
 };
 
 exports.getQuantityOfDocuments = getQuantityOfDocuments;
 exports.getAllLoansSortedByMonths = getAllLoansSortedByMonths;
-exports.getMostActiveUsers = getMostActiveUsers;
+exports.getMostActiveUsersAndBooks = getMostActiveUsersAndBooks;

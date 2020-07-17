@@ -37,7 +37,8 @@ const createBook = async (req, res) => {
 		title,
 		author,
 		image: req.file.path,
-		status: 'Available'
+		status: 'Available',
+		loansQuantity: 0
 	});
 
 	try {
