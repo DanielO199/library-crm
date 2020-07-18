@@ -100,14 +100,14 @@ const getMostActiveUsersAndBooks = async (req, res) => {
 
 	try {
 		mostActiveUsers = await User.find()
-			.limit(5)
+			.limit(3)
 			.sort({ borrowedBooksQuantity: -1 });
 	} catch (err) {
 		return res.status(500).json({ message: 'Could not load data' });
 	}
 
 	try {
-		bestBooks = await Book.find().limit(5).sort({ loansQuantity: -1 });
+		bestBooks = await Book.find().limit(3).sort({ loansQuantity: -1 });
 	} catch (err) {
 		return res.status(500).json({ message: 'Could not load data' });
 	}

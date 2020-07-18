@@ -1,20 +1,24 @@
 import React from 'react';
 import CountUp from 'react-countup';
-import { Bar, Line, Pie } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
+
+const DashboardHeader = () => {
+	return <h1 className='dashboard-header'>Dashboard</h1>;
+};
 
 const Card = ({ quantity, label }) => {
 	return (
 		<div className='card'>
 			<i className='fas fa-2x fa-chart-line'></i>
 			<div className='card-quantity'>
-				<CountUp start={0} end={quantity} duration={4} separator=',' />
+				<CountUp start={0} end={quantity} duration={2} separator=',' />
 			</div>
 			<div className='card-label'>{label}</div>
 		</div>
 	);
 };
 
-const Chart = ({ loans, legendPosition }) => {
+const Chart = ({ loans }) => {
 	const chartData = {
 		labels: [
 			'January',
@@ -34,70 +38,74 @@ const Chart = ({ loans, legendPosition }) => {
 			{
 				label: 'Loans',
 				data: loans,
-				backgroundColor: [
-					'rgba(255, 99, 132, 0.6)',
-					'rgba(54, 162, 235, 0.6)',
-					'rgba(255, 206, 86, 0.6)',
-					'rgba(75, 192, 192, 0.6)',
-					'rgba(153, 102, 255, 0.6)',
-					'rgba(255, 159, 64, 0.6)',
-					'rgba(255, 99, 132, 0.6)'
-				]
+				backgroundColor: 'rgba(237, 68, 161)'
 			}
 		]
 	};
+
+	const options = {
+		animation: {
+			duration: 1500,
+			easing: 'easeInQuint'
+		},
+		responsive: true,
+		layout: {
+			padding: {
+				left: 0,
+				right: 0,
+				top: 0,
+				bottom: 0
+			}
+		},
+		legend: {
+			display: false
+		},
+		title: {
+			display: true,
+			text: 'Loans'
+		},
+		elements: {
+			line: {
+				// backgroundColor: 'rgba(3, 254, 0)',
+				borderColor: 'rgba(243, 130, 192)',
+				fill: false
+			}
+		},
+		scales: {
+			yAxes: [
+				{
+					gridLines: {
+						display: false
+					}
+				}
+			],
+			xAxes: [
+				{
+					gridLines: {
+						display: false
+					}
+				}
+			]
+		}
+	};
+
 	return (
 		<div className='chart'>
-			<Bar
-				data={chartData}
-				options={{
-					legend: {
-						position: legendPosition
-					}
-				}}
-			/>
-
-			{/* <Line
-				data={chartData}
-				options={{
-					title: {
-						display: displayTitle,
-						text: 'Largest Cities In ' + location,
-						fontSize: 25
-					},
-					legend: {
-						display: displayLegend,
-						position: legendPosition
-					}
-				}}
-			/>
-
-			<Pie
-				data={chartData}
-				options={{
-					title: {
-						display: displayTitle,
-						text: 'Largest Cities In ' + location,
-						fontSize: 25
-					},
-					legend: {
-						display: displayLegend,
-						position: legendPosition
-					}
-				}}
-			/> */}
+			<Line data={chartData} options={options} />
 		</div>
 	);
 };
 
 const UsersList = ({ users }) => {
 	return (
-		<div className='users-list'>
+		<div className='dashboard-best-list'>
 			<h2>Most active users</h2>
 			{users.map((user) => (
-				<div className='users-list__items'>
-					<div>{user.name}</div>
-					<div>{user.name}</div>
+				<div key={user._id} className='dashboard-best__item'>
+					<div>
+						{user.name} {user.surname}
+					</div>
+					<div>{user.borrowedBooksQuantity}</div>
 				</div>
 			))}
 		</div>
@@ -106,16 +114,16 @@ const UsersList = ({ users }) => {
 
 const BooksList = ({ books }) => {
 	return (
-		<div className='books-list'>
+		<div className='dashboard-best-list'>
 			<h2>Best books</h2>
 			{books.map((book) => (
-				<div className='books-list__items'>
+				<div key={book._id} className='dashboard-best__item'>
 					<div>{book.title}</div>
-					<div>{book.name}</div>
+					<div>{book.loansQuantity}</div>
 				</div>
 			))}
 		</div>
 	);
 };
 
-export { Card, Chart, UsersList, BooksList };
+export { DashboardHeader, Card, Chart, UsersList, BooksList };

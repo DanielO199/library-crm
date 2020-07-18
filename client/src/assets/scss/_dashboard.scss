@@ -2,12 +2,20 @@
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+	border: solid $border-color 1px;
+	border-radius: 5px;
+	margin: auto;
+	padding-left: 20px;
+	padding-right: 20px;
+	box-sizing: border-box;
 }
 
 .dashboard-cards {
 	display: flex;
 	justify-content: space-around;
+	align-items: center;
 	width: 100%;
+	margin-top: 30px;
 }
 
 .card {
@@ -19,50 +27,59 @@
 	max-width: 250px;
 	height: 150px;
 	border-radius: 5px;
-	border: solid black 1px;
+	border: solid $primary-light-5 2px;
+	box-shadow: 14px 13px 7px -12px rgba(0, 0, 0, 0.75);
+	margin-bottom: 20px;
 	position: relative;
 	i {
 		position: absolute;
 		top: 20px;
 		left: 30px;
-		color: $success;
+		color: $primary-light-3;
 	}
 }
 
 .card-quantity {
 	font-size: 32px;
-	color: $success;
+	color: $primary-light-3;
 }
 
 .card-label {
-	font-size: 24px;
+	font-size: 20px;
 }
 
 .dasboard-charts {
 	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+	margin: 50px 0;
 }
 
 .chart {
-	width: 60%;
+	width: 100%;
 }
 
 .dashboard-best {
 	display: flex;
-	justify-content: space-between;
-	align-items: flex-end;
-	width: 100%;
+	flex-direction: column;
+	justify-content: space-evenly;
+	width: 60%;
 }
 
-.users-list__items,
-.books-list__items {
+.dashboard-best-list {
+	border-radius: 5px;
+	border: solid $primary-light-5 2px;
+	box-shadow: 14px 13px 7px -12px rgba(0, 0, 0, 0.75);
+	padding-bottom: 20px;
+	h2 {
+		text-align: center;
+	}
+}
+
+.dashboard-best__item {
 	display: flex;
 	justify-content: space-between;
-	width: 100%;
-}
-
-.books-list {
-	margin-left: 15px;
+	padding: 15px;
+	box-sizing: border-box;
+	width: 80%;
+	margin: auto;
+	border-bottom: solid $gray-300 3px;
 }

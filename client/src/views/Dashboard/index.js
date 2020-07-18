@@ -3,7 +3,13 @@ import { observer } from 'mobx-react';
 
 import { DasboardStore } from 'stores';
 import { Loader } from 'components/common';
-import { Card, Chart, UsersList, BooksList } from './components';
+import {
+	DashboardHeader,
+	Card,
+	Chart,
+	UsersList,
+	BooksList
+} from './components';
 
 const Dashboard = observer(() => {
 	const {
@@ -24,6 +30,7 @@ const Dashboard = observer(() => {
 
 	return (
 		<div className='dashboard'>
+			<DashboardHeader />
 			{loading && <Loader />}
 			{!loading &&
 				usersQuantity &&
@@ -40,10 +47,10 @@ const Dashboard = observer(() => {
 						</div>
 						<div className='dasboard-charts'>
 							<Chart loans={loans} legendPosition='bottom' />
-						</div>
-						<div className='dashboard-best'>
-							<UsersList users={mostActiveUsers} />
-							<BooksList books={bestBooks} />
+							<div className='dashboard-best'>
+								<UsersList users={mostActiveUsers} />
+								<BooksList books={bestBooks} />
+							</div>
 						</div>
 					</>
 				)}
