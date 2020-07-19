@@ -65,7 +65,8 @@ const UserData = () => {
 		email,
 		image,
 		status,
-		createdAt
+		createdAt,
+		borrowedBooksQuantity
 	} = UsersStore.user;
 	return (
 		<div className='user-data'>
@@ -75,6 +76,7 @@ const UserData = () => {
 				<div className='user-data__label'>Surname</div>
 				<div className='user-data__label'>Phone</div>
 				<div className='user-data__label'>E-mail</div>
+				<div className='user-data__label'>Borrowed books</div>
 				<div className='user-data__label content-item__image'>Image</div>
 				<div className='user-data__label'>Status</div>
 				<div className='user-data__label'>Created at</div>
@@ -85,6 +87,7 @@ const UserData = () => {
 				<div className='user-data__content-item'> {surname}</div>
 				<div className='user-data__content-item'> {phone}</div>
 				<div className='user-data__content-item'> {email}</div>
+				<div className='user-data__content-item'> {borrowedBooksQuantity}</div>
 				<div className='user-data__content-item content-item__image'>
 					<img src={`http://localhost:5000/${image}`} alt={name} />
 				</div>

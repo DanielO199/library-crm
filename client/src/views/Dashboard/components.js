@@ -1,6 +1,7 @@
 import React from 'react';
 import CountUp from 'react-countup';
 import { Line } from 'react-chartjs-2';
+import { Link } from 'react-router-dom';
 
 const DashboardHeader = () => {
 	return <h1 className='dashboard-header'>Dashboard</h1>;
@@ -62,11 +63,13 @@ const Chart = ({ loans }) => {
 		},
 		title: {
 			display: true,
-			text: 'Loans'
+			text: 'Loans',
+			fontSize: 25,
+			position: 'top',
+			padding: 10
 		},
 		elements: {
 			line: {
-				// backgroundColor: 'rgba(3, 254, 0)',
 				borderColor: 'rgba(243, 130, 192)',
 				fill: false
 			}
@@ -103,7 +106,9 @@ const UsersList = ({ users }) => {
 			{users.map((user) => (
 				<div key={user._id} className='dashboard-best__item'>
 					<div>
-						{user.name} {user.surname}
+						<Link to={`/user/${user._id}`}>
+							{user.name} {user.surname}
+						</Link>
 					</div>
 					<div>{user.borrowedBooksQuantity}</div>
 				</div>
@@ -118,7 +123,9 @@ const BooksList = ({ books }) => {
 			<h2>Best books</h2>
 			{books.map((book) => (
 				<div key={book._id} className='dashboard-best__item'>
-					<div>{book.title}</div>
+					<div>
+						<Link to={`/book/${book._id}`}>{book.title}</Link>
+					</div>
 					<div>{book.loansQuantity}</div>
 				</div>
 			))}

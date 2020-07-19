@@ -57,7 +57,16 @@ const BookToolBar = ({ bookId }) => {
 };
 
 const BookData = () => {
-	const { id, isbn, title, author, image, status, createdAt } = BooksStore.book;
+	const {
+		id,
+		isbn,
+		title,
+		author,
+		loansQuantity,
+		image,
+		status,
+		createdAt
+	} = BooksStore.book;
 	return (
 		<div className='book-data'>
 			<div className='book-data__labels'>
@@ -65,6 +74,7 @@ const BookData = () => {
 				<div className='book-data__label'>ISBN</div>
 				<div className='book-data__label'>Title</div>
 				<div className='book-data__label'>Author</div>
+				<div className='book-data__label'>Loans</div>
 				<div className='book-data__label content-item__image'>Image</div>
 				<div className='book-data__label'>Status</div>
 				<div className='book-data__label'>Created at</div>
@@ -74,6 +84,7 @@ const BookData = () => {
 				<div className='book-data__content-item'> {isbn}</div>
 				<div className='book-data__content-item'> {title}</div>
 				<div className='book-data__content-item'> {author}</div>
+				<div className='book-data__content-item'> {loansQuantity}</div>
 				<div className='book-data__content-item content-item__image'>
 					<img src={`http://localhost:5000/${image}`} alt={title} />
 				</div>
