@@ -4,7 +4,6 @@ import APIs from 'api';
 
 class LoansStore {
 	loading = false;
-	isFirstPageNeeded = false;
 	loansQuantity = undefined;
 	loansList = [];
 	books = [];
@@ -109,7 +108,6 @@ class LoansStore {
 
 decorate(LoansStore, {
 	loading: observable,
-	isFirstPageNeeded: observable,
 	loansList: observable,
 	books: observable.ref,
 	users: observable.ref,

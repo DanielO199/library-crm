@@ -12,8 +12,8 @@ const Sidebar = () => {
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to='/home'>
-						<i className='fas fa-chart-line'></i>Audit logs
+					<NavLink to='/audit-logs'>
+						<i class='fas fa-cog'></i>Audit logs
 					</NavLink>
 				</li>
 				<li>

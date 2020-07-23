@@ -12,17 +12,10 @@ import {
 } from './components';
 
 const LoansList = observer(() => {
-	const {
-		loading,
-		loansList,
-		loansQuantity,
-		filters,
-		isFirstPageNeeded
-	} = LoansStore;
+	const { loading, loansList, loansQuantity } = LoansStore;
 
 	useEffect(() => {
 		LoansStore.fetchLoans();
-		LoansStore.resetFilters();
 	}, []);
 
 	return (
@@ -49,12 +42,8 @@ const LoansList = observer(() => {
 				{loansQuantity ? (
 					<Pagination
 						numberOfArticles={loansQuantity}
-						params={filters}
 						articlesPerPage={10}
-						fetchArticles={(page, params) =>
-							LoansStore.fetchLoans(page, params)
-						}
-						isFirstPageNeeded={isFirstPageNeeded}
+						fetchArticles={(page) => LoansStore.fetchLoans(page)}
 					/>
 				) : null}
 				{loansQuantity === 0 && <LoansListNone />}

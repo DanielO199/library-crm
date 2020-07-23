@@ -4,3 +4,4 @@ export { default as UsersStore } from './users.store';
 export { default as BooksStore } from './books.store';
 export { default as LoansStore } from './loans.store';
 export { default as DasboardStore } from './dashboard.store';
+export { default as AuditLogsStore } from './audit-logs.store';

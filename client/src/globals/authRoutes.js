@@ -1,4 +1,5 @@
 import Dashboard from 'views/Dashboard';
+import AuditLogs from 'views/AuditLogs';
 import BooksList from 'views/BooksList';
 import NewBook from 'views/NewBook';
 import UpdateBook from 'views/UpdateBook';
@@ -14,6 +15,7 @@ import Loan from 'views/Loan';
 
 export const authRoutes = [
 	{ path: '/home', name: 'Dashboard', component: Dashboard },
+	{ path: '/audit-logs', name: 'AuditLogs', component: AuditLogs },
 	{ path: '/books', name: 'BooksList', component: BooksList },
 	{ path: '/new/book', name: 'NewBook', component: NewBook },
 	{ path: '/edit-book/:bookId', name: 'BooksList', component: UpdateBook },
