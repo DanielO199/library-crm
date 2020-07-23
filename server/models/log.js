@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const logSchema = new Schema({
-	userEmail: { type: String, required: true },
 	entity: { type: String, required: true },
 	action: { type: String, required: true },
 	createdAt: { type: Date, default: Date.now }

@@ -10,7 +10,7 @@ const usersRoutes = require('./routes/user-routes');
 const booksRoutes = require('./routes/book-routes');
 const loansRoutes = require('./routes/loan-routes');
 const dashboardRoutes = require('./routes/dashboard-routes');
-const Log = require('./models/log');
+const logger = require('./middleware/logger');
 
 const server = express();
 
@@ -30,32 +30,7 @@ server.use(function (req, res, next) {
 	next();
 });
 
-server.use(async (req, res, next) => {
-	if (
-		req.method === 'POST' ||
-		req.method === 'PATCH' ||
-		req.method === 'DELETE'
-	) {
-		let action;
-		const entity = req.url.split('/')[2];
-
-		if (req.method === 'POST') action = 'Create';
-		if (req.method === 'PATCH') action = 'Update';
-		if (req.method === 'DELETE') action = 'Delete';
-
-		let createdLog = new Log({
-			userEmail: 'daniel@onet.pl',
-			entity,
-			action
-		});
-
-		try {
-			await createdLog.save();
-		} catch (err) {}
-	}
-
-	next();
-});
+server.use(logger);
 
 server.use('/api/admin', adminRoutes);
 server.use('/api/users', usersRoutes);
