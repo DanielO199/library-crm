@@ -17,7 +17,7 @@ const AuditLogs = observer(() => {
 	useEffect(() => {
 		AuditLogsStore.fetchLogs();
 	}, []);
-	//TODO ADD SCSS TO LOGS AND CREATE CONTROLLER IN API
+
 	return (
 		<>
 			<div className='audit-logs'>
