@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { observer } from 'mobx-react';
 
+import { AuthStore } from 'stores';
 import { Input, Button, LoadingSpinner } from 'components/common';
 import { useForm, VALIDATOR_EMAIL, VALIDATOR_REQUIRE } from 'utils';
 
-const LoginForm = () => {
-	const [isLoading, setIsLoading] = useState(false);
+const LoginForm = observer(() => {
 	const [formState, inputHandler] = useForm(
 		{
 			email: { value: '', isValid: false },
@@ -12,11 +13,6 @@ const LoginForm = () => {
 		},
 		false
 	);
-
-	const setXD = (e) => {
-		e.preventDefault();
-		setIsLoading(!isLoading);
-	};
 
 	return (
 		<form>
@@ -45,11 +41,23 @@ const LoginForm = () => {
 					valid={true}
 				/>
 			</div>
-			<Button fullWidth onClick={formState.isValid ? setXD : null}>
-				{isLoading ? <LoadingSpinner /> : 'Sign in'}
+			<Button
+				fullWidth
+				onClick={
+					formState.isValid
+						? (e) => {
+								e.preventDefault();
+								AuthStore.login({
+									email: formState.inputs.email.value,
+									password: formState.inputs.password.value
+								});
+						  }
+						: null
+				}>
+				{AuthStore.loading ? <LoadingSpinner /> : 'Sign in'}
 			</Button>
 		</form>
 	);
-};
+});
 
 export { LoginForm };

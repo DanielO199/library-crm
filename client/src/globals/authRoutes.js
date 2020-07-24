@@ -12,20 +12,33 @@ import LoansList from 'views/LoansList';
 import NewLoan from 'views/NewLoan';
 import UpdateLoan from 'views/UpdateLoan';
 import Loan from 'views/Loan';
+import { Protected } from 'components/common';
 
 export const authRoutes = [
-	{ path: '/home', name: 'Dashboard', component: Dashboard },
-	{ path: '/audit-logs', name: 'AuditLogs', component: AuditLogs },
-	{ path: '/books', name: 'BooksList', component: BooksList },
-	{ path: '/new/book', name: 'NewBook', component: NewBook },
-	{ path: '/edit-book/:bookId', name: 'BooksList', component: UpdateBook },
-	{ path: '/book/:bookId', name: 'Book', component: Book },
-	{ path: '/users', name: 'UsersList', component: UsersList },
-	{ path: '/new/user', name: 'NewUser', component: NewUser },
-	{ path: '/edit-user/:userId', name: 'UpdateUser', component: UpdateUser },
-	{ path: '/user/:userId', name: 'User', component: User },
-	{ path: '/loans', name: 'LoansList', component: LoansList },
-	{ path: '/new/loan', name: 'NewLoan', component: NewLoan },
-	{ path: '/edit-loan/:loanId', name: 'UpdateLoan', component: UpdateLoan },
-	{ path: '/loan/:loanId', name: 'Loan', component: Loan }
+	{ path: '/home', name: 'Dashboard', component: Protected(Dashboard) },
+	{ path: '/audit-logs', name: 'AuditLogs', component: Protected(AuditLogs) },
+	{ path: '/books', name: 'BooksList', component: Protected(BooksList) },
+	{ path: '/new/book', name: 'NewBook', component: Protected(NewBook) },
+	{
+		path: '/edit-book/:bookId',
+		name: 'BooksList',
+		component: Protected(UpdateBook)
+	},
+	{ path: '/book/:bookId', name: 'Book', component: Protected(Book) },
+	{ path: '/users', name: 'UsersList', component: Protected(UsersList) },
+	{ path: '/new/user', name: 'NewUser', component: Protected(NewUser) },
+	{
+		path: '/edit-user/:userId',
+		name: 'UpdateUser',
+		component: Protected(UpdateUser)
+	},
+	{ path: '/user/:userId', name: 'User', component: Protected(User) },
+	{ path: '/loans', name: 'LoansList', component: Protected(LoansList) },
+	{ path: '/new/loan', name: 'NewLoan', component: Protected(NewLoan) },
+	{
+		path: '/edit-loan/:loanId',
+		name: 'UpdateLoan',
+		component: Protected(UpdateLoan)
+	},
+	{ path: '/loan/:loanId', name: 'Loan', component: Protected(Loan) }
 ];

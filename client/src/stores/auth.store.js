@@ -2,13 +2,9 @@ import { observable, action, decorate, reaction } from 'mobx';
 import APIs from 'api';
 
 class AuthStore {
-	loading = true;
-	token = 'dsf';
-	admin = {
-		id: '',
-		email: ''
-	};
-	alert = '';
+	loading = false;
+	token = undefined;
+	admin = {};
 
 	constructor() {
 		reaction(
@@ -24,15 +20,12 @@ class AuthStore {
 	}
 
 	login(data) {
+		this.loading = true;
 		return APIs.auth
 			.login(data)
 			.then((response) => {
 				this.token = response.token;
 				this.admin.id = response.adminId;
-				this.admin.email = response.email;
-			})
-			.catch((err) => {
-				this.alert = err.message;
 			})
 			.finally(() => {
 				this.loading = false;

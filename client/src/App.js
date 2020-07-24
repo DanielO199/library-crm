@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
+import { observer } from 'mobx-react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 
 import { AuthStore } from 'stores';
 import { routes } from 'globals/routesCombined';
 import { Sidebar, Logger } from 'components/common';
 
-const App = () => {
+const App = observer(() => {
 	useEffect(() => {
 		if (localStorage.getItem('accessToken')) {
 			AuthStore.token = localStorage.getItem('accessToken');
@@ -16,7 +17,7 @@ const App = () => {
 		<div className='app'>
 			<Logger />
 			<Router>
-				<Sidebar />
+				{AuthStore.token && <Sidebar />}
 				<main className={`${AuthStore.token && 'logged'}`}>
 					{routes.map((route, index) => {
 						return (
@@ -33,6 +34,6 @@ const App = () => {
 			</Router>
 		</div>
 	);
-};
+});
 
 export default App;
