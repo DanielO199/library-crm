@@ -3,6 +3,7 @@ import APIs from 'api';
 
 class AuditLogs {
 	loading = false;
+	logsQuantity = undefined;
 	logs = [];
 
 	fetchLogs(page) {
@@ -10,7 +11,8 @@ class AuditLogs {
 		return APIs.auditLogs
 			.getLogs(page)
 			.then((response) => {
-				console.log(response);
+				this.logs = response.results;
+				this.logsQuantity = response.length;
 			})
 			.finally(() => {
 				this.loading = false;
@@ -20,6 +22,7 @@ class AuditLogs {
 
 decorate(AuditLogs, {
 	loading: observable,
+	logsQuantity: observable,
 	logs: observable,
 	fetchLogs: action
 });

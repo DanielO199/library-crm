@@ -13,7 +13,7 @@ const Sidebar = () => {
 				</li>
 				<li>
 					<NavLink to='/audit-logs'>
-						<i class='fas fa-cog'></i>Audit logs
+						<i className='fas fa-cog'></i>Audit logs
 					</NavLink>
 				</li>
 				<li>

@@ -30,7 +30,7 @@ const AuditLogs = observer(() => {
 							<AuditLogItem
 								key={log._id}
 								id={log._id}
-								date={log.date}
+								createdAt={log.createdAt}
 								entity={log.entity}
 								action={log.action}
 							/>

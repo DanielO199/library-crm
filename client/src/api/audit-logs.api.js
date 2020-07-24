@@ -1,10 +1,10 @@
 import { request } from './request';
 
-const endpointBasePath = '/logs';
+const endpointBasePath = '/dashboard';
 
 export default class AuditLogsApi {
 	getLogs(page) {
-		return request(`${endpointBasePath}?page=${page}&limit=10`, {
+		return request(`${endpointBasePath}/logs/?page=${page}&limit=10`, {
 			method: 'GET'
 		});
 	}

@@ -18,10 +18,10 @@ const AuditLogsToolBar = () => {
 	);
 };
 
-const AuditLogItem = ({ id, date, entity, action }) => {
+const AuditLogItem = ({ id, createdAt, entity, action }) => {
 	return (
 		<tr>
-			<td>{date}</td>
+			<td>{createdAt}</td>
 			<td>{entity}</td>
 			<td>{action}</td>
 			<td>{id}</td>
