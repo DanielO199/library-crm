@@ -95,6 +95,10 @@ const getAllLoansSortedByMonths = async (req, res) => {
 	res.json({ borrowsInMonthObj: Object.values(borrowsInMonthObj) });
 };
 
+const getAuditLogs = async (req, res) => {
+	res.json(res.paginatedResults);
+};
+
 const getMostActiveUsersAndBooks = async (req, res) => {
 	let mostActiveUsers, bestBooks;
 
@@ -117,4 +121,5 @@ const getMostActiveUsersAndBooks = async (req, res) => {
 
 exports.getQuantityOfDocuments = getQuantityOfDocuments;
 exports.getAllLoansSortedByMonths = getAllLoansSortedByMonths;
+exports.getAuditLogs = getAuditLogs;
 exports.getMostActiveUsersAndBooks = getMostActiveUsersAndBooks;
