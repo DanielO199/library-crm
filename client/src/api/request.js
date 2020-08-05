@@ -34,7 +34,7 @@ const logger = (data, url) => {
 const errorLogger = (error, url = '') => {
 	DEBUG &&
 		console.log(url, `\n\t status: ${error}`, `\n\t payload: `, error.data);
-	return error.response.data.message;
+	return error.response;
 };
 
 export const request = (_url, _config = {}) => {
@@ -67,7 +67,6 @@ export const request = (_url, _config = {}) => {
 			return logger(data, _url);
 		})
 		.catch((error) => {
-			console.log(error);
 			if (error) LoggerStore.errorLog(error);
 			throw errorLogger(error, _url);
 		});

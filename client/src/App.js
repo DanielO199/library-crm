@@ -26,7 +26,8 @@ const App = observer(() => {
 								path={route.path}
 								exact={route.exact}
 								name={route.name}
-								component={route.component}
+								// component={route.component}
+								render={(props) => <route.component {...props} />}
 							/>
 						);
 					})}
