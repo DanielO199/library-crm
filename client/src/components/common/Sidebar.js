@@ -1,7 +1,10 @@
 import React from 'react';
+import { observer } from 'mobx-react';
 import { NavLink } from 'react-router-dom';
 
-const Sidebar = () => {
+import { AuthStore } from 'stores';
+
+const Sidebar = observer(() => {
 	return (
 		<aside>
 			<ul className='nav-links'>
@@ -33,12 +36,10 @@ const Sidebar = () => {
 				</li>
 			</ul>
 			<div className='logout'>
-				<i
-					onClick={() => console.log('cks')}
-					className='fas fa-2x fa-sign-out-alt'></i>
+				<i onClick={AuthStore.logout} className='fas fa-2x fa-sign-out-alt'></i>
 			</div>
 		</aside>
 	);
-};
+});
 
 export default Sidebar;

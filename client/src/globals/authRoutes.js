@@ -1,81 +1,18 @@
-import React from 'react';
-import Loadable from 'react-loadable';
-
+import Dashboard from 'views/Dashboard';
+import AuditLogs from 'views/AuditLogs';
+import BooksList from 'views/BooksList';
+import NewBook from 'views/NewBook';
+import UpdateBook from 'views/UpdateBook';
+import Book from 'views/Book';
+import UsersList from 'views/UsersList';
+import NewUser from 'views/NewUser';
+import UpdateUser from 'views/UpdateUser';
+import User from 'views/User';
+import LoansList from 'views/LoansList';
+import NewLoan from 'views/NewLoan';
+import UpdateLoan from 'views/UpdateLoan';
+import Loan from 'views/Loan';
 import { Protected } from 'components/common';
-
-function Loading() {
-	return <div>Loading...</div>;
-}
-
-const Dashboard = Loadable({
-	loader: () => import('views/Dashboard'),
-	loading: Loading
-});
-
-const AuditLogs = Loadable({
-	loader: () => import('views/AuditLogs'),
-	loading: Loading
-});
-
-const BooksList = Loadable({
-	loader: () => import('views/BooksList'),
-	loading: Loading
-});
-
-const NewBook = Loadable({
-	loader: () => import('views/NewBook'),
-	loading: Loading
-});
-
-const UpdateBook = Loadable({
-	loader: () => import('views/UpdateBook'),
-	loading: Loading
-});
-
-const Book = Loadable({
-	loader: () => import('views/Book'),
-	loading: Loading
-});
-
-const UsersList = Loadable({
-	loader: () => import('views/UsersList'),
-	loading: Loading
-});
-
-const NewUser = Loadable({
-	loader: () => import('views/NewUser'),
-	loading: Loading
-});
-
-const UpdateUser = Loadable({
-	loader: () => import('views/UpdateUser'),
-	loading: Loading
-});
-
-const User = Loadable({
-	loader: () => import('views/User'),
-	loading: Loading
-});
-
-const LoansList = Loadable({
-	loader: () => import('views/LoansList'),
-	loading: Loading
-});
-
-const NewLoan = Loadable({
-	loader: () => import('views/NewLoan'),
-	loading: Loading
-});
-
-const UpdateLoan = Loadable({
-	loader: () => import('views/UpdateLoan'),
-	loading: Loading
-});
-
-const Loan = Loadable({
-	loader: () => import('views/Loan'),
-	loading: Loading
-});
 
 export const authRoutes = [
 	{ path: '/home', name: 'Dashboard', component: Protected(Dashboard) },

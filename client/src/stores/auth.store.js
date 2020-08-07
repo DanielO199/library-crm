@@ -34,6 +34,7 @@ class AuthStore {
 
 	logout() {
 		this.token = null;
+		localStorage.removeItem('accessToken');
 	}
 }
 
